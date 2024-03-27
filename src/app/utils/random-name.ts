@@ -1,0 +1,61 @@
+const cuteAnimals: string[] = [
+  "Puppy",
+  "Kitten",
+  "Bunny",
+  "Panda",
+  "Koala",
+  "Hedgehog",
+  "Hamster",
+  "Chick",
+  "Duckling",
+  "Chinchilla",
+  "Sloth",
+  "Fawn",
+  "Penguin",
+  "Otter",
+  "Squirrel",
+  "Lamb",
+  "Meerkat",
+  "Monkey",
+  "Fox",
+  "Seal",
+  "Butterfly",
+  "Ladybug",
+  "Turtle",
+  "Parrot",
+  "Sugar Glider",
+  "Ferret",
+  "Giraffe",
+  "Elephant",
+  "Hippo",
+  "Raccoon",
+  "Guinea Pig",
+  "Leopard Cub",
+  "Lion Cub",
+  "Tiger Cub",
+  "Bear Cub",
+  "Cheetah Cub",
+  "Wolf Pup",
+  "Dolphin",
+  "Whale Calf",
+  "Octopus",
+  "Starfish",
+  "Seahorse",
+  "Jellyfish",
+  "Kangaroo Joey",
+  "Wallaby",
+  "Platypus",
+  "Narwhal",
+  "Red Panda",
+  "Alpaca",
+  "Llama",
+];
+
+export function getRandomNewAnimal(): string {
+  // Generate a random index based on the array's length
+  const randomIndex = Math.floor(Math.random() * cuteAnimals.length);
+  // Select an animal name based on the random index
+  const animalName = cuteAnimals[randomIndex];
+  // Return the formatted string
+  return `New ${animalName}`;
+}
