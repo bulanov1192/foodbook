@@ -38,9 +38,4 @@ export const authOptions = {
       from: process.env.EMAIL_FROM,
     }),
   ],
-  pages: {
-    signIn: "/auth",
-    signOut: "/",
-    newUser: "/",
-  },
 } satisfies NextAuthOptions;
