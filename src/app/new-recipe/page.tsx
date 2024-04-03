@@ -17,7 +17,7 @@ export default async function NewRecipe() {
     <div className="container flex flex-col mx-auto">
       <h1 className="text-2xl font-medium mb-5">New Recipe</h1>
       <p className="mb-2">
-        Provide detailed description of the recipe and it's every step.
+        Provide detailed description of the recipe and it&apos;s every step.
       </p>
       <p className="mb-5">
         Add photos of these steps and, of cource, photos of final meal.
