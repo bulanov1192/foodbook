@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./utils/auth";
 import LogOutBtn from "@/components/LogOutBtn";
 import Link from "next/link";
+import CollapsibleMenu from "@/components/menu/menu";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -20,27 +21,19 @@ export default async function RootLayout({
 }>) {
   const session = await getServerSession(authOptions);
 
+  const user = {
+    name: session?.user?.name || "",
+    email: session?.user?.email || "",
+    image: session?.user?.image || "",
+  };
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className="bg-gray-900 py-4 px-8 flex items-center justify-between">
-          <div>
-            <h1 className="text-white text-lg font-bold">Foodbook</h1>
-          </div>
-          <div>
-            {session ? (
-              <LogOutBtn />
-            ) : (
-              <Link
-                className="text-white text-sm font-medium py-2 px-4 rounded bg-blue-300 hover:bg-blue-400"
-                href="/auth"
-              >
-                Sign in
-              </Link>
-            )}
-          </div>
-        </nav>
-        {children}
+        <div className="flex h-screen">
+          <CollapsibleMenu user={user} />
+          <main className="flex-1 px-6 py-14">{children}</main>
+        </div>
       </body>
     </html>
   );

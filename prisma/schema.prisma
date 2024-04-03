@@ -70,16 +70,25 @@ model VerificationToken {
 }
 
 model Product {
-  id          String        @id @default(uuid())
-  name        String        @db.VarChar(200)
+  id                String            @id @default(uuid())
+  name              String            @db.VarChar(200)
+  description       String?
+  images            String[]          @default([])
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  deletedAt         DateTime?
+  user_id           String
+  user              User              @relation(fields: [user_id], references: [id])
+  ProductLike       ProductLike[]
+  ProductCategories ProductCategory[]
+}
+
+model ProductCategory {
+  id          String    @id @default(uuid())
+  title       String
   description String?
-  images      String[]      @default([])
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  deletedAt   DateTime?
-  user_id     String
-  user        User          @relation(fields: [user_id], references: [id])
-  ProductLike ProductLike[]
+  icon        String?
+  Products    Product[]
 }
 
 model Recipe {
@@ -102,7 +111,7 @@ model RecipeStep {
   step_number Int
   title       String    @db.VarChar(255)
   description String
-  image_url   String
+  images      String[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime?
@@ -114,7 +123,7 @@ model RecipeCategory {
   id          String   @id @default(uuid())
   title       String
   description String?
-  icon        String
+  icon        String?
   Recipes     Recipe[]
 }
 
